@@ -1,5 +1,10 @@
 import { createApp } from "vue";
+import Antd from "ant-design-vue";
 import App from "./App.vue";
 import router from "./router";
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+app.config.productionTip = false;
+app.use(router);
+app.use(Antd);
+app.mount("#app");
