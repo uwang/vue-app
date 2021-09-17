@@ -10,12 +10,27 @@
 
 <script>
 import zhCN from "ant-design-vue/es/locale/zh_CN";
+import request from "@/utils/request";
 
 export default {
   data() {
     return {
       locale: zhCN,
     };
+  },
+  mounted() {
+    request
+      .get("/api/login")
+      .then((res) => {
+        console.log(res);
+        return request.get("/api/news");
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(() => {
+        console.warn("请求异常");
+      });
   },
 };
 </script>
